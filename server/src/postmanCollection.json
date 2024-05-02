@@ -1,0 +1,38 @@
+{
+    "info": {
+        "_postman_id": "your_postman_id",
+        "name": "MERN News App API",
+        "description": "Collection of API endpoints for a MERN stack news app."
+    },
+    "item": [
+        {
+            "name": "Create Article",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n\t\"title\": \"Sample Article\",\n\t\"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\",\n\t\"author\": \"John Doe\",\n\t\"publicationDate\": \"2024-04-30\",\n\t\"category\": \"Technology\",\n\t\"tags\": \"sample, technology, lorem\",\n\t\"imageUrl\": \"https://example.com/sample-image.jpg\",\n\t\"source\": \"Example News\",\n\t\"views\": 0,\n\t\"likes\": 0,\n\t\"comment\": \"Sample comment\",\n\t\"isActive\": true\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/api/articles",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "api",
+                        "articles"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
+}
