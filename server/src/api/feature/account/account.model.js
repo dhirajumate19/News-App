@@ -41,6 +41,10 @@ const usersSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  article: {
+    type: String,
+    required: true,
+  },
 });
 
 export const usersModel = mongoose.model("users", usersSchema);

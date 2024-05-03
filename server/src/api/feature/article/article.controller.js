@@ -1,4 +1,3 @@
-import { response } from "express";
 import {
   failedResponse,
   successReponse,
@@ -44,7 +43,37 @@ export const createArticle = async (req, res) => {
   }
 };
 
-export const viewArticle = (req, res) => {
+export const viewArticle = async (req, res) => {
+  const result = await articleModel.aggregate([
+    {
+      $match: {
+        title: "T20 Wolrds cup",
+      },
+    },
+    {
+      $lookup: {
+        from: "users",
+        localField: "_id",
+        foreignField: "article",
+        as: "UserDetails",
+      },
+    },
+
+    {
+      $project: {
+        _id: 0,
+        title: 1,
+        content: 1,
+        publicationDate: 1,
+        author: 1,
+        UserDetails: 1,
+      },
+    },
+  ]);
+  res.status(200).send(successReponse(result, "Record Fetch"));
   try {
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send(failedResponse(400, "Something went Wrong!"));
+  }
 };

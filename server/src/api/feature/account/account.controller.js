@@ -6,7 +6,8 @@ import { usersModel } from "./account.model.js";
 
 export const signupController = async (req, res) => {
   try {
-    const { username, email, password, firstName, lastName, age } = req.body;
+    const { username, email, password, firstName, lastName, age, article } =
+      req.body;
     const newUsers = new usersModel({
       username,
       email,
@@ -14,6 +15,7 @@ export const signupController = async (req, res) => {
       firstName,
       lastName,
       age,
+      article,
     });
     const response = await newUsers.save();
     res.status(201).send(successReponse(response, "User Created successfully"));
